@@ -80,9 +80,13 @@ void loop() {
 
 ## 4. (Permintaan tambahan) alur baru
 
+## 4. (Permintaan tambahan) alur baru
+
 ### 🔹 Alur:
 
 `Lambat → Cepat → Sedang → Mati` (tanpa reset langsung)
+
+---
 
 ### 🔹 Source Code
 
@@ -95,46 +99,76 @@ void setup() {
 }
 
 void loop() {
-  // Menyalakan LED
   digitalWrite(ledPin, HIGH);
-  delay(timeDelay); // LED ON
+  delay(timeDelay);
 
-  // Mematikan LED
   digitalWrite(ledPin, LOW);
-  delay(timeDelay); // LED OFF
+  delay(timeDelay);
 
-  // Percabangan perubahan kecepatan
   if (timeDelay > 600) {
-    timeDelay -= 200; // dari lambat ke cepat
+    timeDelay -= 200;
   } 
   else if (timeDelay > 300) {
-    timeDelay -= 100; // menuju kecepatan sedang
+    timeDelay -= 100;
   } 
   else if (timeDelay > 0) {
-    timeDelay -= 100; // semakin cepat
+    timeDelay -= 100;
   } 
   else {
-    while(true); // berhenti (mati)
+    while(true);
   }
 }
 ```
 
 ---
 
-### 🔹 Penjelasan per baris
+## 🔹 Penjelasan Alur Program
 
-* `const int ledPin = 6;` → menentukan pin LED
-* `int timeDelay = 1000;` → delay awal (lambat)
-* `pinMode(ledPin, OUTPUT);` → set pin sebagai output
-* `digitalWrite(HIGH/LOW);` → nyalakan/matikan LED
-* `delay(timeDelay);` → atur kecepatan kedipan LED
+### 1. Kondisi Awal
 
-Percabangan:
+* `timeDelay = 1000 ms`
+* LED berkedip lambat
 
-* `if (timeDelay > 600)` → fase lambat ke cepat
-* `else if (timeDelay > 300)` → fase sedang
-* `else if (timeDelay > 0)` → fase sangat cepat
-* `else` → program berhenti (LED mati)
+---
+
+### 2. Percepatan Bertahap
+
+* Program masuk ke blok `if`
+* `timeDelay` dikurangi (`-200`)
+* LED menjadi lebih cepat
+
+---
+
+### 3. Kondisi Cepat
+
+* Saat `timeDelay <= 600`
+* Program masuk ke blok `else if`
+* `timeDelay` dikurangi (`-100`)
+* LED berkedip lebih cepat lagi
+
+---
+
+### 4. Kondisi Sedang
+
+* Saat `timeDelay <= 300`
+* Program tetap di blok `else if`
+* Kecepatan mulai distabilkan menuju sedang
+
+---
+
+### 5. Kondisi Mati
+
+* Saat `timeDelay <= 0`
+* Program masuk ke blok `else`
+* LED berhenti berkedip
+
+---
+
+### 6. Program Berhenti
+
+* `while(true)` menjaga program tetap berhenti
+* Tidak terjadi reset ulang
+
 
 ---
 
