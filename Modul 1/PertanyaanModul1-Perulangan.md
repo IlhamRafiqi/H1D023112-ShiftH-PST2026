@@ -21,7 +21,7 @@ dan berikan penjelasan disetiap baris kode nya dalam bentuk README.md!
 
 Efek LED berjalan dari kiri ke kanan dibuat menggunakan **perulangan `for`** yang mengakses pin Arduino secara berurutan dari kecil ke besar.
 
-### 💻 Kode Program (Kiri → Kanan)
+### Kode Program (Kiri → Kanan)
 
 ```cpp
 void loop() {
@@ -34,7 +34,7 @@ void loop() {
 }
 ```
 
-### 🔍 Penjelasan Kode
+### Penjelasan Kode
 
 ### 1. Perulangan for
 
@@ -46,7 +46,7 @@ for (int ledPin = 2; ledPin < 8; ledPin++)
 * `ledPin < 8` → berhenti di pin 7
 * `ledPin++` → pindah ke kanan (naik satu per satu)
 
-👉 Artinya: LED menyala berurutan dari **pin 2 → 3 → 4 → 5 → 6 → 7**
+Artinya: LED menyala berurutan dari **pin 2 → 3 → 4 → 5 → 6 → 7**
 
 ### 2. Menyalakan LED
 
@@ -75,7 +75,7 @@ digitalWrite(ledPin, LOW);
 * Memberi logika **LOW**
 * LED dimatikan sebelum pindah ke LED berikutnya
 
-### 💡 Cara Kerja Efek Running LED
+### Cara Kerja Efek Running LED
 
 Program bekerja secara berurutan:
 
@@ -86,7 +86,7 @@ Program bekerja secara berurutan:
 
 Karena proses ini cepat dan berulang, terlihat seperti **LED bergerak dari kiri ke kanan**.
 
-### 📊 Ilustrasi
+### Ilustrasi
 
 ```
 [2] → [3] → [4] → [5] → [6] → [7]
@@ -95,12 +95,100 @@ Karena proses ini cepat dan berulang, terlihat seperti **LED bergerak dari kiri 
 ○     ○     ⬤     ○     ○     ○
 ```
 
-## ✅ Kesimpulan
+## Kesimpulan
 
 Efek LED berjalan dari kiri ke kanan dibuat dengan:
 
 * Perulangan `for`
 * Urutan pin dari kecil ke besar
+* Kombinasi `HIGH`, `delay`, dan `LOW`
+
+---
+
+## 3. Cara Program Membuat LED Berjalan dari Kanan ke Kiri
+
+Efek LED dari kanan ke kiri dibuat dengan **perulangan `for` terbalik**, yaitu dari pin terbesar ke pin terkecil.
+
+### Kode Program (Kanan → Kiri)
+
+```cpp id="z4b2ks"
+void loop() {
+  // looping dari pin tinggi ke rendah (kanan ke kiri)
+  for (int ledPin = 7; ledPin >= 2; ledPin--) {
+    digitalWrite(ledPin, HIGH); // nyalakan LED
+    delay(100);                 // tunggu sebentar
+    digitalWrite(ledPin, LOW);  // matikan LED
+  }
+}
+```
+
+## Penjelasan Kode
+
+### 1. Perulangan for (Terbalik)
+
+```cpp id="y6a8qp"
+for (int ledPin = 7; ledPin >= 2; ledPin--)
+```
+
+* `ledPin = 7` → mulai dari LED paling kanan
+* `ledPin >= 2` → berhenti di pin 2
+* `ledPin--` → bergerak ke kiri (mundur)
+
+Artinya: LED menyala berurutan dari **pin 7 → 6 → 5 → 4 → 3 → 2**
+
+### 2. Menyalakan LED
+
+```cpp id="g1v9sd"
+digitalWrite(ledPin, HIGH);
+```
+
+* Memberi logika **HIGH**
+* LED akan **menyala**
+
+### 3. Delay (Jeda)
+
+```cpp id="m8t2lk"
+delay(100);
+```
+
+* Memberi jeda 100 ms
+* Supaya perpindahan LED terlihat jelas
+
+### 4. Mematikan LED
+
+```cpp id="q3k7wv"
+digitalWrite(ledPin, LOW);
+```
+
+* Memberi logika **LOW**
+* LED dimatikan sebelum pindah ke LED berikutnya
+
+### Cara Kerja Efek
+
+Program berjalan seperti ini:
+
+1. LED pin 7 menyala → mati
+2. LED pin 6 menyala → mati
+3. LED pin 5 menyala → mati
+4. dan seterusnya sampai pin 2
+
+Karena urutannya dari besar ke kecil, maka terlihat seperti **LED bergerak dari kanan ke kiri**.
+
+### Ilustrasi
+
+```id="n2x8bz"
+[7] ← [6] ← [5] ← [4] ← [3] ← [2]
+⬤     ○     ○     ○     ○     ○
+○     ⬤     ○     ○     ○     ○
+○     ○     ⬤     ○     ○     ○
+```
+
+### Kesimpulan
+
+Efek LED dari kanan ke kiri dibuat dengan:
+
+* Perulangan `for` terbalik (`--`)
+* Urutan pin dari besar ke kecil
 * Kombinasi `HIGH`, `delay`, dan `LOW`
 
 ---
