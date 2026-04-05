@@ -193,3 +193,152 @@ Efek LED dari kanan ke kiri dibuat dengan:
 
 ---
 
+## 4. Program 3 LED Kanan dan 3 LED Kiri Bergantian
+
+Pada soal ini diminta membuat pola:
+
+* **3 LED kiri menyala bersamaan**
+* **3 LED kanan menyala bersamaan**
+* Menyala **bergantian terus menerus**
+
+### Kode Program
+
+```cpp id="z8f1kd"
+// delay waktu
+int timer = 500;
+
+void setup() {
+  // set pin 2 sampai 7 sebagai OUTPUT
+  for (int ledPin = 2; ledPin < 8; ledPin++) {
+    pinMode(ledPin, OUTPUT);
+  }
+}
+
+void loop() {
+
+  // === 3 LED KIRI MENYALA ===
+  digitalWrite(2, HIGH);
+  digitalWrite(3, HIGH);
+  digitalWrite(4, HIGH);
+
+  digitalWrite(5, LOW);
+  digitalWrite(6, LOW);
+  digitalWrite(7, LOW);
+
+  delay(timer);
+
+  // === 3 LED KANAN MENYALA ===
+  digitalWrite(2, LOW);
+  digitalWrite(3, LOW);
+  digitalWrite(4, LOW);
+
+  digitalWrite(5, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(7, HIGH);
+
+  delay(timer);
+}
+```
+
+### Penjelasan Baris per Baris
+
+### 1. Variabel Delay
+
+```cpp id="1y2k3l"
+int timer = 500;
+```
+
+* Menentukan waktu jeda (500 ms)
+* Semakin besar → semakin lambat perpindahan
+
+### 2. Setup Pin Output
+
+```cpp id="8m9n0p"
+for (int ledPin = 2; ledPin < 8; ledPin++) {
+  pinMode(ledPin, OUTPUT);
+}
+```
+
+* Mengatur pin 2–7 sebagai **output**
+* Menggunakan `for` agar lebih efisien
+
+### 3. Menyalakan 3 LED Kiri
+
+```cpp id="a1b2c3"
+digitalWrite(2, HIGH);
+digitalWrite(3, HIGH);
+digitalWrite(4, HIGH);
+```
+
+* LED kiri (pin 2,3,4) **menyala bersamaan**
+
+```cpp id="d4e5f6"
+digitalWrite(5, LOW);
+digitalWrite(6, LOW);
+digitalWrite(7, LOW);
+```
+
+* LED kanan dimatikan
+
+### 4. Delay
+
+```cpp id="g7h8i9"
+delay(timer);
+```
+
+* Memberi jeda sebelum pindah pola
+
+### 5. Menyalakan 3 LED Kanan
+
+```cpp id="j1k2l3"
+digitalWrite(2, LOW);
+digitalWrite(3, LOW);
+digitalWrite(4, LOW);
+```
+
+* LED kiri dimatikan
+
+```cpp id="m4n5o6"
+digitalWrite(5, HIGH);
+digitalWrite(6, HIGH);
+digitalWrite(7, HIGH);
+```
+
+* LED kanan (pin 5,6,7) **menyala bersamaan**
+
+### 6. Delay Lagi
+
+```cpp id="p7q8r9"
+delay(timer);
+```
+
+* Memberi jeda sebelum mengulang loop
+
+### Cara Kerja Program
+
+Program akan berjalan seperti ini:
+
+1. LED kiri (2,3,4) ON → LED kanan OFF
+2. Tunggu 500 ms
+3. LED kanan (5,6,7) ON → LED kiri OFF
+4. Tunggu 500 ms
+5. Ulang terus (loop)
+
+### Ilustrasi
+
+```id="viz123"
+Kiri ON  : [2][3][4]   Kanan OFF : [5][6][7]
+Kanan ON : [5][6][7]   Kiri OFF  : [2][3][4]
+```
+
+### Kesimpulan
+
+Program ini menggunakan:
+
+* Kombinasi **digitalWrite HIGH & LOW**
+* **delay** untuk jeda
+* **loop()** untuk pengulangan otomatis
+
+Sehingga menghasilkan efek **LED kiri dan kanan menyala bergantian**.
+
+---
