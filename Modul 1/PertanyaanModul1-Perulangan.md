@@ -11,3 +11,6 @@ dan berikan penjelasan disetiap baris kode nya dalam bentuk README.md!
 ---
 
 # Jawaban
+
+## 1. Gambar rangkaian schematic
+![Schematic LED Running](images/schematic.png)
