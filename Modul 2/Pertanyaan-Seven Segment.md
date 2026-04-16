@@ -11,7 +11,7 @@
 ## Jawaban
 
 ## 1. Gambar rangkaian schematic
-![Schematic Seven Segment](Schematic Seven Segment.png)
+![Schematic Seven Segment](Schematic-Seven-Segment.png)
 
 ---
 
