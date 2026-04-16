@@ -37,14 +37,14 @@ Kesimpulan: `INPUT_PULLUP` membuat sistem lebih stabil, sederhana, dan efisien.
 
 Jika salah satu segmen tidak menyala, terdapat beberapa kemungkinan penyebab:
 
-#### 🔧 Dari sisi hardware:
+#### Dari sisi hardware:
 - Kabel tidak terhubung dengan benar
 - Resistor rusak atau tidak terpasang
 - LED pada segmen tersebut rusak
 - Salah koneksi pin pada seven segment
 - Common (anode/cathode) tidak terhubung dengan benar
 
-#### 💻 Dari sisi software:
+#### Dari sisi software:
 - Kesalahan pada array `digitPattern`
 - Urutan pin tidak sesuai dengan program
 - Salah logika HIGH/LOW (common cathode vs anode)
