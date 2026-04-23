@@ -1,4 +1,4 @@
-# 📘 Praktikum Sistem Tertanam - Modul 2 Pemrograman GPIO
+# 📘 Praktikum Sistem Tertanam - Modul 3 Protokol Komunikasi
 
 # Pertanyaan Praktikum
 1. Jelaskan proses dari input keyboard hingga LED menyala/mati!
